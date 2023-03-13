@@ -3,9 +3,9 @@ const mysql = require('mysql');
 const connData = {
     host: process.env.MYSQLHOST,
     user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
+    password: process.env.DB_PASSWORD,
     database: process.env.MYSQLDATABASE,
-    port: proccess.env.MYSQLPORT
+    port: process.env.MYSQLPORT
 }
 
 console.log(connData);
