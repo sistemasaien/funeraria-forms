@@ -1,24 +1,4 @@
-const mysql = require('mysql');
-
-const connData = {
-    host: process.env.MYSQLHOST,
-    user: process.env.MYSQLUSER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: process.env.MYSQLPORT
-}
-
-console.log(connData);
-
-const connection = mysql.createConnection(connData);
-
-connection.connect(function (err) {
-    // en caso de error
-    if (err) {
-        console.log('ERROR:', err.code);
-        console.log('ERROR2:', err.fatal);
-    }
-});
+const connection = require('../controllers/database');
 
 const register = async (req, res) => {
     const { username, password, phone, mail, name } = req.body;
