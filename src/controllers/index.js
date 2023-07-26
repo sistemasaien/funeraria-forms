@@ -1,8 +1,8 @@
 const connection = require('../controllers/database');
 
 const register = async (req, res) => {
-    const { username, password, phone, mail, name } = req.body;
-    const response = await connection.query(`INSERT INTO users (username, password, role, phone, mail, name) VALUES ('${username}', '${password}', ${2}, '${phone}', '${mail}', '${name}')`, function (err, rows) {
+    const { username, password, phone, mail, name, role } = req.body;
+    const response = await connection.query(`INSERT INTO users (username, password, role, phone, mail, name) VALUES ('${username}', '${password}', ${role}, '${phone}', '${mail}', '${name}')`, function (err, rows) {
         if (err) {
             res.status(409).send(err);
         }
@@ -15,8 +15,8 @@ const register = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const { username, password, phone, mail, name } = req.body;
-    const response = await connection.query(`UPDATE users SET username = '${username}', password = '${password}', phone = '${phone}', mail = '${mail}', name = '${name}' WHERE username = '${username}'`, function (err, rows) {
+    const { username, password, phone, mail, name, role } = req.body;
+    const response = await connection.query(`UPDATE users SET username = '${username}', password = '${password}', phone = '${phone}', mail = '${mail}', name = '${name}', role = '${role}' WHERE username = '${username}'`, function (err, rows) {
         if (err) {
             res.status(409).send(err);
         }
